@@ -88,5 +88,9 @@ func (d *DefaultStringService) ToSnakeCase(s string) (string, error) {
 
 // WordCount implements [StringService].
 func (d *DefaultStringService) WordCount(s string) (int, error) {
-	panic("unimplemented")
+	if s == "" {
+		return 0, ErrEmptyString
+	}
+	words := strings.Fields(s)
+	return len(words), nil
 }

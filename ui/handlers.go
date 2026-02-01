@@ -55,3 +55,19 @@ func reverse(reader *bufio.Reader, svc service.StringService) {
 	}
 	fmt.Printf("Reverse: %s\n", reversed)
 }
+
+func wordCount(reader *bufio.Reader, svc service.StringService) {
+	fmt.Print("Enter text: ")
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("error reading input:", err)
+		return
+	}
+	text = strings.TrimSpace(text)
+	numberOfWords, err := svc.WordCount(text)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("Number of words: %d\n", numberOfWords)
+}
