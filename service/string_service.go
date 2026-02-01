@@ -2,8 +2,6 @@ package service
 
 import (
 	"errors"
-	"fmt"
-	"slices"
 	"strings"
 	"unicode"
 )
