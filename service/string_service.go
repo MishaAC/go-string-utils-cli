@@ -2,7 +2,10 @@ package service
 
 import (
 	"errors"
+	"fmt"
+	"slices"
 	"strings"
+	"unicode"
 )
 
 var ErrEmptyString = errors.New("empty string is not allowed")
@@ -30,7 +33,21 @@ func (d *DefaultStringService) Capitalize(s string) (string, error) {
 
 // CountConsonants implements [StringService].
 func (d *DefaultStringService) CountConsonants(s string) (int, error) {
-	panic("unimplemented")
+	if s == "" {
+		return 0, ErrEmptyString
+	}
+	count := 0
+	for _, v := range strings.ToLower(s) {
+		if !unicode.IsLetter(v) {
+			continue
+		}
+		switch v {
+		case 'a', 'e', 'i', 'o', 'u':
+		default:
+			count++
+		}
+	}
+	return count, nil
 }
 
 // CountVowels implements [StringService].
