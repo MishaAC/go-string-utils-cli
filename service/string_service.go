@@ -70,7 +70,15 @@ func (d *DefaultStringService) IsPalindrome(s string) (bool, error) {
 
 // Reverse implements [StringService].
 func (d *DefaultStringService) Reverse(s string) (string, error) {
-	panic("unimplemented")
+	if s == "" {
+		return "", ErrEmptyString
+	}
+	runes := []rune(s)
+	reversed := make([]rune, 0, len(runes))
+	for i := len(runes) - 1; i >= 0; i-- {
+		reversed = append(reversed, runes[i])
+	}
+	return string(reversed), nil
 }
 
 // ToSnakeCase implements [StringService].

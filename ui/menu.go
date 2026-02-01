@@ -34,7 +34,7 @@ func RunMenu(reader *bufio.Reader, svc service.StringService) {
 		case "2":
 			countConsonants(reader, svc)
 		case "3":
-			fmt.Println(3)
+			reverse(reader, svc)
 		case "4":
 			fmt.Println(4)
 		case "5":
