@@ -71,3 +71,19 @@ func wordCount(reader *bufio.Reader, svc service.StringService) {
 	}
 	fmt.Printf("Number of words: %d\n", numberOfWords)
 }
+
+func isPalindrome(reader *bufio.Reader, svc service.StringService) {
+	fmt.Print("Enter text: ")
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("error reading input:", err)
+		return
+	}
+	text = strings.TrimSpace(text)
+	palindrome, err := svc.IsPalindrome(text)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("Is palindrome?: %t\n", palindrome)
+}

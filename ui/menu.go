@@ -36,7 +36,7 @@ func RunMenu(reader *bufio.Reader, svc service.StringService) {
 		case "3":
 			reverse(reader, svc)
 		case "4":
-			fmt.Println(4)
+			isPalindrome(reader, svc)
 		case "5":
 			wordCount(reader, svc)
 		case "6":

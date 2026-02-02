@@ -65,7 +65,22 @@ func (d *DefaultStringService) CountVowels(s string) (int, error) {
 
 // IsPalindrome implements [StringService].
 func (d *DefaultStringService) IsPalindrome(s string) (bool, error) {
-	panic("unimplemented")
+	if s == "" {
+		return false, ErrEmptyString
+	}
+	s = strings.ToLower(s)
+	var runes []rune
+	for _, v := range s {
+		if unicode.IsLetter(v) || unicode.IsDigit(v) {
+			runes = append(runes, v)
+		}
+	}
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		if runes[i] != runes[j] {
+			return false, nil
+		}
+	}
+	return true, nil
 }
 
 // Reverse implements [StringService].
