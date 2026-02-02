@@ -26,7 +26,17 @@ func NewStringService() StringService {
 
 // Capitalize implements [StringService].
 func (d *DefaultStringService) Capitalize(s string) (string, error) {
-	panic("unimplemented")
+	if s == "" {
+		return "", ErrEmptyString
+	}
+	words := strings.Fields(strings.ToLower(s))
+	result := make([]string, 0, len(words))
+	for _, word := range words {
+		runes := []rune(word)
+		runes[0] = unicode.ToUpper(runes[0])
+		result = append(result, string(runes))
+	}
+	return strings.Join(result, " "), nil
 }
 
 // CountConsonants implements [StringService].

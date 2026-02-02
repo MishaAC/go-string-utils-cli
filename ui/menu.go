@@ -40,7 +40,7 @@ func RunMenu(reader *bufio.Reader, svc service.StringService) {
 		case "5":
 			wordCount(reader, svc)
 		case "6":
-			fmt.Println(6)
+			capitalize(reader, svc)
 		case "7":
 			fmt.Println(7)
 		case "8":

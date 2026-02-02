@@ -87,3 +87,19 @@ func isPalindrome(reader *bufio.Reader, svc service.StringService) {
 	}
 	fmt.Printf("Is palindrome?: %t\n", palindrome)
 }
+
+func capitalize(reader *bufio.Reader, svc service.StringService) {
+	fmt.Print("Enter text: ")
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("error reading input:", err)
+		return
+	}
+	text = strings.TrimSpace(text)
+	capitalized, err := svc.Capitalize(text)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("Capitalized: %s\n", capitalized)
+}
