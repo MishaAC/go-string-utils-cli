@@ -103,3 +103,19 @@ func capitalize(reader *bufio.Reader, svc service.StringService) {
 	}
 	fmt.Printf("Capitalized: %s\n", capitalized)
 }
+
+func toSnakeCase(reader *bufio.Reader, svc service.StringService) {
+	fmt.Print("Enter text: ")
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("error reading input:", err)
+		return
+	}
+	text = strings.TrimSpace(text)
+	snaked, err := svc.ToSnakeCase(text)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("Snaked: %s\n", snaked)
+}

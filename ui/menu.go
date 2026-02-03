@@ -42,7 +42,7 @@ func RunMenu(reader *bufio.Reader, svc service.StringService) {
 		case "6":
 			capitalize(reader, svc)
 		case "7":
-			fmt.Println(7)
+			toSnakeCase(reader, svc)
 		case "8":
 			fmt.Println("Bye 👋")
 			return

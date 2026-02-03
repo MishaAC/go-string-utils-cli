@@ -108,7 +108,11 @@ func (d *DefaultStringService) Reverse(s string) (string, error) {
 
 // ToSnakeCase implements [StringService].
 func (d *DefaultStringService) ToSnakeCase(s string) (string, error) {
-	panic("unimplemented")
+	if s == "" {
+		return "", ErrEmptyString
+	}
+	words := strings.Fields(strings.ToLower(s))
+	return strings.Join(words, "_"), nil
 }
 
 // WordCount implements [StringService].
